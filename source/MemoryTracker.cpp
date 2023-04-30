@@ -19,16 +19,16 @@ using std::cout;
 //------------------------------------------------------------------------------
 // constructor
 //------------------------------------------------------------------------------
-MemoryTracker::MemoryTracker(int len) {
+MemoryTracker::MemoryTracker(size_t _bytelen) {
     
     // allocate memory block to track
-    pTrackAddress = new int[len];
+    pTrackAddress = new size_t[_bytelen];
 
-    cout << "Normal constructor allocating " << len
+    cout << "Normal constructor allocating " << _bytelen
         << " ints at " << pTrackAddress << '\n';
 
-    memset(pTrackAddress, '=', len * sizeof(int));
-    *pTrackAddress = len;
+    memset(pTrackAddress, '=', _bytelen * sizeof(int));
+    *pTrackAddress = _bytelen;
 }
 
 //------------------------------------------------------------------------------
@@ -39,15 +39,15 @@ MemoryTracker::MemoryTracker(int len) {
 //------------------------------------------------------------------------------
 MemoryTracker::MemoryTracker(const MemoryTracker& m1) {
     // get block length to allocate
-    int len = *(m1.pTrackAddress);
+    size_t len = *(m1.pTrackAddress);
 
     cout << "Copy constructor allocating " << len << " ints at ";
 
     // allocate memory for m2
-    pTrackAddress = new int[len];
+    pTrackAddress = new size_t[len];
 
     // copy block length and data from this instance
-    memcpy(pTrackAddress, m1.pTrackAddress, len * sizeof(int));
+    memcpy(pTrackAddress, m1.pTrackAddress, len * sizeof(size_t));
 
     // display the address of allocated memory
     cout << pTrackAddress << '\n';

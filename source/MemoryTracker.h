@@ -21,14 +21,14 @@ class MemoryTracker {
     friend ostream& operator<<(ostream& os, MemoryTracker& mt);
 
 private:
-    int* pTrackAddress;
+    size_t* pTrackAddress;
 
 public:
     // constructor
-    MemoryTracker(int len);
+    MemoryTracker(size_t _bytelen);
 
     // copy constructor
-    // is for assignments to new LHS instance
+    // for assignments to new LHS instance
     MemoryTracker(const MemoryTracker& mt);     
 
     // destructor
@@ -38,6 +38,6 @@ public:
     int getLength(void);
 
     // assignment operator overload
-    // is for assignments to existing LHS instance
+    // for assignments to existing LHS instance
     MemoryTracker& operator=(const MemoryTracker& m2);
 };
